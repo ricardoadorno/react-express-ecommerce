@@ -1,10 +1,13 @@
 import express from 'express';
+import { dataSource } from './database/data-source';
+import router from './routes';
 
 const app = express();
+app.use(express.json());
 
-app.get('/', (req, res) => {
-  res.send('Hello wwwe!');
-});
+dataSource.initialize().catch((error) => console.log(error));
+
+app.use(router);
 
 app.listen(3000, () => {
   console.log('Server is running on http://localhost:3000');
