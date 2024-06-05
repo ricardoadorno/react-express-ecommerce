@@ -9,13 +9,16 @@ import ProductRepository from '../repositories/product.repository';
 
 class ProductService {
   static async getAllOrFilter(query?: QueryProductDto) {
-    if (isEmpty(query)) return await ProductRepository.findAll();
+    if (isEmpty(query))
+      return (await ProductRepository.findAll()).map(Product.toViewDto);
 
-    return await ProductRepository.findByFilter(new Product(query));
+    return (await ProductRepository.findByFilter(new Product(query))).map(
+      Product.toViewDto
+    );
   }
 
   static async getOne(id: number) {
-    return await ProductRepository.findOne(id);
+    return Product.toViewDto(await ProductRepository.findOne(id));
   }
 
   static async create(data: CreateProductDto) {
