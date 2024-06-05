@@ -2,7 +2,14 @@ import { Heart, ScanSearch, Star } from 'lucide-react';
 import Typography from '../atoms/typography';
 import { Separator } from '@radix-ui/react-separator';
 
-export default function ProductCard() {
+interface ProductCardProps {
+    id: number;
+    name: string;
+    description: string;
+    price: number;
+}
+
+export default function ProductCard({ id, name, description, price }: ProductCardProps) {
     return (
         <div
         >
@@ -28,11 +35,11 @@ export default function ProductCard() {
                 </div>
             </figure>
             <Typography>
-                Lorem, ipsum.
+                {name}
             </Typography>
 
             <Typography >
-                Lorem, ipsum.
+                {price}
             </Typography>
 
             <div className="flex items-center gap-2 mt-2">

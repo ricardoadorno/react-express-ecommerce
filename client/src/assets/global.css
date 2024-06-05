@@ -54,6 +54,6 @@
     @apply border-border;
   }
   body {
-    @apply bg-foreground text-background container mx-auto pt-6 px-8 min-h-screen;
+    @apply bg-foreground text-background;
   }
 }
