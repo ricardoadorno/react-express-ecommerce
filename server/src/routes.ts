@@ -3,20 +3,20 @@ import ProductController from './controllers/product.controller';
 import { validateRequest } from './middlewares/validateRequest';
 import { CreateProductDto, UpdateProductDto } from './dtos/product.dto';
 
-const router = Router();
+const routes = Router();
 
-router.get('/product', ProductController.get);
-router.get('/product/:id', ProductController.getOne);
-router.post(
+routes.get('/product', ProductController.get);
+routes.get('/product/:id', ProductController.getOne);
+routes.post(
   '/product',
   validateRequest(CreateProductDto),
   ProductController.create
 );
-router.put(
+routes.put(
   '/product/:id',
   validateRequest(UpdateProductDto),
   ProductController.update
 );
-router.delete('/product/:id', ProductController.remove);
+routes.delete('/product/:id', ProductController.remove);
 
-export default router;
+export default routes;
