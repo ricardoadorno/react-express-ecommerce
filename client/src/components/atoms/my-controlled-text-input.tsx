@@ -1,15 +1,19 @@
+import { FieldError } from 'react-hook-form';
 import { Input } from '../shadcn/ui/input';
 
 interface MyControlledTextInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
-    register: any;
-    name: string;
+    error?: FieldError;
+    required?: boolean;
 }
 
-export default function MyControlledTextInput({ name, register, ...rest }: MyControlledTextInputProps) {
+export default function MyControlledTextInput({ error, ...rest }: MyControlledTextInputProps) {
     return (
-        <Input
-            {...rest}
-            {...register(name)}
-        />
+        <>
+            <Input
+                {...rest}
+            />
+            {error && <p>{error?.message}</p>}
+        </>
+
     )
 }
